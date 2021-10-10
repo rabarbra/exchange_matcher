@@ -23,10 +23,4 @@ typedef struct item {
     struct item *next;
 } t_list;
 
-typedef struct tree_node {
-    struct tree_node    *left;
-    struct tree_node    *right;
-    t_list              *orders;
-} t_tree_node;
-
 #endif
