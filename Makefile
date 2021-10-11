@@ -11,10 +11,10 @@ CFLAGS = -Wall -Wextra -Wpedantic -Werror -Wshadow
 .PHONY: all clean fclean re
 
 ${OBJ}:
-	${CC} ${CFLAGS} -c ${MAIN}
+	${CC} ${CFLAGS} -c ${MAIN} ${SRC}
 
 ${TARGET}:${OBJ}
-	${CC} ${CFLAGS} -o ${TARGET} $(MAIN:.c=.o)
+	${CC} ${CFLAGS} -o ${TARGET} $(MAIN:.c=.o) ${SRC}
 
 all: ${TARGET}
 
