@@ -19,6 +19,8 @@ Arguments:
 
 Input data structude:
 * `O`,`order id (uint)`,`order side - S(ell) or B(uy)`,`quantity (uint)`,`price (float, precision = 2`
+* `C`,`12` - cancell order 12
+
 * `O,1,S,2,30.52` - sell order, order id = 1, quantity = 2, price = 30.52
 * `O,2,B,45,200.4` - buy order, order id = 2, quantity = 46, price = 2.4 
 * `C,2` - cancel order with order id 2
