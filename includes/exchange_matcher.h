@@ -1,11 +1,11 @@
 #ifndef EXCHANGE_MATCHER_H
-# define EXCHANGE_MATCHER_H
-# define ORDER_LINE_SIZE 35
-# define TRADE_LINE_SIZE 35
-# include <ctype.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <errno.h>
+#define EXCHANGE_MATCHER_H
+#define ORDER_LINE_SIZE 35
+#define TRADE_LINE_SIZE 35
+#include <ctype.h>
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef enum result {
     SUCCESS = 0,
@@ -17,23 +17,23 @@ typedef enum result {
 } result;
 
 typedef struct item {
-    void        *data;
+    void *data;
     struct item *next;
 } t_list;
 
 typedef struct {
-    unsigned    oid;
-    unsigned    qty;
-    unsigned    price[2];
+    unsigned oid;
+    unsigned qty;
+    unsigned price[2];
 } t_order;
 
 typedef struct {
-    unsigned    id;
-    char        side;
-    unsigned    oid1;
-    unsigned    oid2;
-    unsigned    qty;
-    unsigned    price[2];
+    unsigned id;
+    char side;
+    unsigned oid1;
+    unsigned oid2;
+    unsigned qty;
+    unsigned price[2];
 } t_trade;
 
 t_list *new_list(void *data);

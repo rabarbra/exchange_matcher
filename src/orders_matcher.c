@@ -73,7 +73,7 @@ result place_order(char side, t_order *order, t_list **bid, t_list **offer,
         } else {
             res = trade_order(trade_side, order, side, trades);
             if (res != SUCCESS) {
-                free (order);
+                free(order);
                 return (res);
             }
             if (order->qty)
