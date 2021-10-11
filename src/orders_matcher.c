@@ -1,5 +1,6 @@
 #include "../includes/exchange_matcher.h"
 
+/* Executes order, appends trade to trades */
 result trade_order(t_list **head, t_order *order, char side, t_list *trades) {
     t_trade *trade;
     t_list *buf = NULL;
@@ -39,6 +40,11 @@ result trade_order(t_list **head, t_order *order, char side, t_list *trades) {
     return (SUCCESS);
 }
 
+/* Places order to market depth. If order matches, executes order,
+   writes trades to trades list.
+   Frees order if needed. If returns error, order is already freed.
+   If SUCCESS - placed in market depth or fully executed and freed.
+   Do not free order after this finction. */
 result place_order(char side, t_order *order, t_list **bid, t_list **offer,
                    t_list *trades) {
     t_list **place_side;
@@ -61,14 +67,17 @@ result place_order(char side, t_order *order, t_list **bid, t_list **offer,
     }
     if (!(*trade_side)->data) {
         res = insert_item(place_side, order, side);
-        if (res != SUCCESS)
+        if (res != SUCCESS) {
+            free(order);
             return (res);
+        }
     } else {
         if (is_market_price_better(side, order->price,
                                    ((t_order *)(*trade_side)->data)->price) <
             0) {
             res = insert_item(place_side, order, side);
             if (res != SUCCESS)
+                free(order);
                 return (res);
         } else {
             res = trade_order(trade_side, order, side, trades);
@@ -85,6 +94,8 @@ result place_order(char side, t_order *order, t_list **bid, t_list **offer,
     return (SUCCESS);
 }
 
+/* Removes existing order from market depth. If order id doesn't exist
+   in market depth, doesn't do anything. */
 result cancel_order(unsigned order_id, t_list **offer, t_list **bid) {
     t_list *buf = NULL;
     t_list *buf_2 = NULL;

@@ -41,22 +41,19 @@ result insert_item(t_list **head, t_order *order, char side) {
     t_list *buf = NULL;
     t_list *new_item = NULL;
 
-    if (!(new_item = new_list(order))) {
-        if (order)
-            free(order);
+    if (!(new_item = new_list(order)))
         return (MEM_ALLOC_FILED);
-    }
     buf = *head;
     if (!buf->data) {
         *head = new_item;
-        new_item = NULL;
+        if (buf->next)
+            free_list(&buf->next);
         return (SUCCESS);
     }
     if (is_market_price_better(side, order->price,
                                ((t_order *)buf->data)->price) > 0) {
         new_item->next = buf;
         *head = new_item;
-        new_item = NULL;
     } else {
         while (buf->next && is_market_price_better(
                                 side, order->price,
@@ -65,7 +62,6 @@ result insert_item(t_list **head, t_order *order, char side) {
         }
         new_item->next = buf->next;
         buf->next = new_item;
-        new_item = NULL;
     }
     return (SUCCESS);
 }
