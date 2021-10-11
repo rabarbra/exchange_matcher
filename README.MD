@@ -28,6 +28,6 @@ Input data structude:
 Output data structure:
 * `T`,`trade id (uint)`,`S(ell) or B(uy)`,`older order id (uint)`,`newer order id (uint)`,`quantity (uint)`,`price (float .2)`
 * `X`,`order id` - order has been cancelled
--Examples:
+- Examples:
 * `T,1,S,1,2,2,30.52` - Sell trade beetween orded 1 and order 2, quantity = 2, price = 30.52
 * `X,2` - Order 2 has been cancelled
