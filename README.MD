@@ -18,7 +18,7 @@ Arguments:
 * `-o` - output file, default is stdout
 
 Input data structude:
-* `O`,`order id (uint)`,`order side - S(ell) or B(uy)`,`quantity (uint)`,`price (float, precision = 2`
+* `O`,`order id (uint)`,`order side - S(ell) or B(uy)`,`quantity (uint)`,`price (float, precision = 2)`
 * `C`,`order id (uint)` - cancell order
 - Examples:
 * `O,1,S,2,30.52` - sell order, order id = 1, quantity = 2, price = 30.52
