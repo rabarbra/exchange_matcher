@@ -1,6 +1,6 @@
 #include "../includes/exchange_matcher.h"
 
-/* Executes order, appends trade to trades */
+/* Executes order, inits and construcs new trade, appends trade to trades list */
 result trade_order(t_list **head, t_order *order, char side, t_list *trades) {
     t_trade *trade;
     t_list *buf = NULL;
@@ -124,6 +124,10 @@ result cancel_order(unsigned order_id, t_list **offer, t_list **bid) {
     return (NOTHING_TO_DO);
 }
 
+/* Reads from input FILE (in), parses data to order, sends orders to
+   market depth (place_order()) or cancels orders (cancel_orders).
+   Reads trades from trades list, serializes trade data to string
+   And sends strings to output FILE (out) */
 result process(FILE *in, FILE *out) {
     char order_line[ORDER_LINE_SIZE] = {0};
     char trade_line[TRADE_LINE_SIZE] = {0};
