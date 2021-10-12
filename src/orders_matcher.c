@@ -1,6 +1,7 @@
 #include "../includes/exchange_matcher.h"
 
-/* Executes order, inits and construcs new trade, appends trade to trades list */
+/* Executes order, inits and construcs new trade, appends trade to trades list
+ */
 result trade_order(t_list **head, t_order *order, char side, t_list *trades) {
     t_trade *trade;
     t_list *buf = NULL;
@@ -76,9 +77,10 @@ result place_order(char side, t_order *order, t_list **bid, t_list **offer,
                                    ((t_order *)(*trade_side)->data)->price) <
             0) {
             res = insert_item(place_side, order, side);
-            if (res != SUCCESS)
+            if (res != SUCCESS) {
                 free(order);
                 return (res);
+            }
         } else {
             res = trade_order(trade_side, order, side, trades);
             if (res != SUCCESS) {
