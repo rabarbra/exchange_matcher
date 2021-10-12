@@ -35,7 +35,7 @@ Output data format:
 # Data structures and time performance
 
 There are used two sorted linked lists for buy and sell orders.
-Orders get filled in O(1) time, are placed if no fill - in O(n) time, are cancelled in O(n).
+Orders get filled in O(1) time, are placed if no match - in O(n) time, are cancelled in O(n).
 
 # TO DO
 
