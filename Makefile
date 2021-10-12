@@ -1,20 +1,21 @@
 TARGET = exchange_matcher
 
-SRC = main.c \
-	  src/*.c
+SRC = $(wildcard src/*.c)
+
+OBJ = $(wildcard *.o)
 
 CC = clang
 CFLAGS = -Wall -Wextra -Wpedantic -Werror -Wshadow
 
-${TARGET}:${OBJ}
-	${CC} ${CFLAGS} -o ${TARGET} ${SRC}
+${TARGET}:
+	${CC} ${CFLAGS} -o $@ ${SRC}
 
 .PHONY: all clean fclean re
 
 all: ${TARGET}
 
 clean:
-	rm -rf *.o
+	rm -rf ${OBJ}
 
 fclean: clean
 	rm -rf ${TARGET}
