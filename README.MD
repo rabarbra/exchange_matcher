@@ -41,4 +41,5 @@ Orders get filled in O(1) time, are placed if no match - in O(n) time, are cance
 
 * Test coverage
 * Better gateways for input / output - read and write any defined buffer, not line by line.
+* Better error processing and graceful shutdown logic.
 * Maybe another data structure for placed limit orders with better time performance for place and delete operations.
